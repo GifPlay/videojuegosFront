@@ -1,0 +1,42 @@
+<div class="container py-4">
+  <div class="py-2 px-2 text-center">
+    <h1 class="mb-4 mt-2 text-5xl font-bold text-gray-900 md:text-5xl lg:text-5xl dark:text-white">
+      Crear nueva consola
+    </h1>
+  </div>
+  <div class=" flex flex-col items-center
+             mt-4 p-3">
+
+
+    <form class="max-w-md mx-auto mt-4" [formGroup]="consolaFormGroup" (ngSubmit)="onUpdateConsola()">
+      <div class="grid gap-1 mb-6 md:grid-cols-1">
+        <div>
+          <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Nombre</label>
+          <input type="text" formControlName="nombre" id="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 placeholder="Nintendo" required />
+          <mat-error *ngIf="f.nombre?.errors?.required">
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">El nombre es requerido.</span></p>
+          </mat-error>
+        </div>
+        <div>
+          <label for="empresa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Empresa</label>
+          <input type="text" formControlName="empresa" id="empresa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 placeholder="Switch" required />
+          <mat-error *ngIf="f.empresa?.errors?.required">
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">La empresa es requerida.</span></p>
+          </mat-error>
+        </div>
+        <div>
+          <label for="lanzamiento" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Fecha de lanzamiento</label>
+          <input type="number" formControlName="lanzamiento" id="lanzamiento" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 placeholder="2010" required />
+          <mat-error *ngIf="f.lanzamiento?.errors?.required">
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">El lanzamiento es requerido.</span></p>
+          </mat-error>
+        </div>
+      </div>
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar cambios</button>
+      <a href="/consolas" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Cancelar registro</a>
+    </form>
+  </div>
+</div>

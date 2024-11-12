@@ -1,0 +1,80 @@
+<div class="container py-4">
+  <div class="py-2 px-2 text-center">
+    <h1 class="mb-4 mt-2 text-5xl font-bold text-gray-900 md:text-5xl lg:text-5xl dark:text-white">
+      Editar juego
+    </h1>
+  </div>
+  <div class=" flex flex-col items-center
+             mt-4 p-3">
+
+
+    <form class="max-w-md mx-auto mt-4" [formGroup]="juegoFormGroup" (ngSubmit)="onUpdateRegistro()">
+      <div class="grid gap-5 mb-6 md:grid-cols-1">
+        <div>
+          <label for="titulo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Titulo del juego</label>
+          <input type="text" formControlName="titulo" id="titulo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 placeholder="Nombre del juego" required />
+        </div>
+        <div>
+          <label for="descripcion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Descripción</label>
+          <input type="text" formControlName="descripcion" id="descripcion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 placeholder="Descripción" required />
+        </div>
+
+        <div>
+          <label for="anio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Año de lanzamiento</label>
+          <input type="number" formControlName="anio" id="anio" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 placeholder="Año" required />
+        </div>
+
+        <div>
+          <label for="calificacion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Calificacion</label>
+          <input type="number" formControlName="calificacion" id="calificacion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 placeholder="Calificacion" required />
+        </div>
+        <div>
+          <label for="jugadores" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Número de jugadores</label>
+          <input type="number" formControlName="jugadores" id="jugadores" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 placeholder="Jugadores" required />
+        </div>
+        <div>
+          <label for="franquicia" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Franquicia del juego</label>
+          <input type="text" formControlName="franquicia" id="franquicia" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 placeholder="Franquicia" required />
+        </div>
+
+        <div class="">
+          <label for="idGenero" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Genero</label>
+          <mat-select placeholder="Selecciona un Tipo" name="idGenero" formControlName="idGenero" required>
+            <mat-option  *ngFor="let propertyGenero of propertyGeneros" [value]="propertyGenero.value">
+              {{propertyGenero.ngValue}}
+            </mat-option>
+          </mat-select>
+        </div>
+
+        <div class="">
+          <label for="idConsola" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Consola</label>
+          <mat-select placeholder="Selecciona un Tipo" name="idConsola" formControlName="idConsola" required>
+            <mat-option  *ngFor="let propertyConsola of propertyConsolas" [value]="propertyConsola.value">
+              {{propertyConsola.ngValue}}
+            </mat-option>
+          </mat-select>
+        </div>
+
+        <div class="">
+          <label for="idClasificacion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white uppercase">Clasificaciones</label>
+          <mat-select placeholder="Selecciona un Tipo" name="idClasificacion" formControlName="idClasificacion" required>
+            <mat-option  *ngFor="let propertyClasificacion of propertyClasificaciones" [value]="propertyClasificacion.value">
+              {{propertyClasificacion.ngValue}}
+            </mat-option>
+          </mat-select>
+        </div>
+
+
+
+      </div>
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar cambios</button>
+      <a href="/juegos" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 ml-14 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Cancelar registro</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+
+<div class="container py-4">
+  <div class="py-2 px-2 text-center">
+    <h1 class="mb-4 mt-2 text-3xl font-bold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+      Consulta de consolas
+    </h1>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-10 p-1">
+
+
+        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar registro</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+          </svg>
+        </div>
+        <input matInput (keyup)="filtrar($event)" type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar registro" required>
+        <a href="consolas/create" class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Agregar nueva consola</a>
+      </div>
+      <div class="mat-elevation-z8 mt-4">
+        <div class="overflow-x-auto ">
+          <table mat-table [dataSource]="dataSource" class="border-gray-300"
+                 matSort matSortActive="created_at" matSortDisableClear matSortDirection="desc">
+            <!-- ID Column -->
+            <ng-container matColumnDef="idConsola">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
+              <td mat-cell *matCellDef="let row" className="text-black"> {{row.idConsola}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="empresa">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </th>
+              <td mat-cell *matCellDef="let row"> {{row.empresa}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lanzamiento">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Lanzamiento </th>
+              <td mat-cell *matCellDef="let row"> {{row.lanzamiento}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+              <th class="md\:hidden" mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+              <td class="md\:hidden" mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+              <td mat-cell *matCellDef="let row">
+                <button (click)="editConsola(row.idConsola)" type="button" class="mt-1 focus:outline-none text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Editar</button>
+                <button (click)="showConsola(row.idConsola)" type="button" class="mt-1 focus:outline-none text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Mostrar</button>
+                <button (click)="showDelete(row.idConsola)" type="button" class="mt-1 focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Eliminar</button>
+
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+</div>
